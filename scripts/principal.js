@@ -828,7 +828,7 @@ if (
 
 
 // =========================================================
-// CONTADOR DE AÑOS
+// CONTADOR
 // =========================================================
 
 const contadores =
@@ -1042,7 +1042,7 @@ actualizarMenuActivo();
 
 
 // =========================================================
-// EFECTO PARALLAX HERO
+// PARALLAX HERO
 // =========================================================
 
 const seccionInicio =
@@ -1197,7 +1197,7 @@ if (
 
 
 // =========================================================
-// EFECTO MUY SUAVE EN TARJETAS
+// EFECTO TARJETAS
 // =========================================================
 
 const tarjetasMovimiento =
@@ -1293,7 +1293,7 @@ tarjetasMovimiento.forEach(
 
 
 // =========================================================
-// CORREGIR MENÚ AL REDIMENSIONAR
+// AJUSTAR MENÚ AL REDIMENSIONAR
 // =========================================================
 
 window.addEventListener(
@@ -1340,7 +1340,7 @@ window.addEventListener(
 
 
 // =========================================================
-// CARGA COMPLETA
+// CARGA
 // =========================================================
 
 window.addEventListener(
