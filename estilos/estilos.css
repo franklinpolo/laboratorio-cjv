@@ -8932,3 +8932,103 @@ img {
     }
 }
 
+
+/* =========================================================
+   CORRECCIÓN FINAL RESPONSIVE HERO - CELULAR
+   Evita que el contenido del inicio conserve dos columnas.
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .inicio {
+        min-height: 100svh;
+        height: auto;
+    }
+
+    .inicio-contenido {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 91%;
+        gap: 0;
+        padding-top: 120px;
+        padding-bottom: 145px;
+    }
+
+    .inicio-principal {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .inicio-descripcion {
+        width: 100%;
+        max-width: 560px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .inicio-contenido {
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 91%;
+        padding-top: 115px;
+        padding-bottom: 145px;
+    }
+
+    .inicio-principal {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .etiqueta-inicio {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.45;
+    }
+
+    .inicio h1 {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(2.65rem, 12.5vw, 4rem);
+        line-height: 0.95;
+    }
+
+    .inicio h1 strong {
+        font-size: 0.78em;
+        line-height: 1.04;
+    }
+
+    .inicio-descripcion {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 30px;
+        font-size: 0.94rem;
+        line-height: 1.75;
+    }
+
+    .inicio-botones {
+        width: 100%;
+        margin-top: 28px;
+    }
+
+    .inicio-botones .boton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .inicio-contenido {
+        width: 90%;
+    }
+
+    .inicio h1 {
+        font-size: clamp(2.35rem, 12vw, 3.15rem);
+    }
+
+    .inicio-descripcion {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+}
+
