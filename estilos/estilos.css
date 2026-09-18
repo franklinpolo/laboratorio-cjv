@@ -8695,3 +8695,240 @@ img {
     }
 
 }
+/* =========================================================
+   AJUSTES SOLICITADOS POR LABORATORIO CJV - 2026
+   Logo completo + hero sin traslapes + responsive
+========================================================= */
+
+/* El logo debe mostrarse completo, sin recorte */
+.marca {
+    flex: 0 0 auto;
+    min-width: 0;
+    overflow: visible;
+}
+
+.logo {
+    width: auto;
+    max-width: 230px;
+    height: 80px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.footer-marca img {
+    width: auto;
+    max-width: 240px;
+    height: auto;
+    max-height: 105px;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Evita que el título principal se monte en laptops y pantallas medianas */
+.inicio-principal {
+    min-width: 0;
+}
+
+.inicio h1 {
+    max-width: 100%;
+    font-size: clamp(3.7rem, 6.25vw, 6.45rem);
+    line-height: 0.88;
+    letter-spacing: -0.06em;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.inicio h1 > span,
+.inicio h1 strong {
+    max-width: 100%;
+}
+
+.inicio h1 strong {
+    margin-top: 14px;
+    font-size: 0.88em;
+    line-height: 0.96;
+    letter-spacing: -0.055em;
+}
+
+/* Las imágenes de presentación deben mostrar su contenido completo */
+.nosotros-imagen img {
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Ajustes progresivos para laptop/tablet */
+@media (max-width: 1250px) {
+    .cabecera-contenedor {
+        width: 94%;
+    }
+
+    .navegacion {
+        gap: 20px;
+    }
+
+    .logo {
+        max-width: 205px;
+        height: 74px;
+    }
+
+    .inicio-contenido {
+        grid-template-columns: minmax(0, 1.35fr) minmax(255px, 0.65fr);
+        gap: 55px;
+    }
+
+    .inicio h1 {
+        font-size: clamp(3.5rem, 5.8vw, 5.65rem);
+    }
+}
+
+@media (max-width: 1100px) {
+    .logo {
+        max-width: 190px;
+        height: 70px;
+    }
+
+    .inicio-contenido {
+        gap: 38px;
+    }
+
+    .inicio h1 {
+        font-size: clamp(3.35rem, 5.7vw, 5.15rem);
+        line-height: 0.91;
+    }
+
+    .inicio h1 strong {
+        margin-top: 11px;
+        font-size: 0.84em;
+        line-height: 1;
+    }
+}
+
+@media (max-width: 900px) {
+    .logo {
+        max-width: 205px;
+        height: 70px;
+    }
+
+    .inicio h1 {
+        font-size: clamp(3.25rem, 10vw, 5rem);
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+    }
+
+    .inicio h1 strong {
+        font-size: 0.86em;
+        line-height: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .cabecera-contenedor {
+        height: 78px;
+    }
+
+    .logo {
+        max-width: 175px;
+        height: 62px;
+    }
+
+    .inicio h1 {
+        margin-top: 30px;
+        font-size: clamp(2.65rem, 13vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+    }
+
+    .inicio h1 strong {
+        margin-top: 8px;
+        font-size: 0.78em;
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+    }
+
+    .inicio-descripcion {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 390px) {
+    .logo {
+        max-width: 155px;
+        height: 58px;
+    }
+
+    .inicio h1 {
+        font-size: clamp(2.35rem, 12.5vw, 3.25rem);
+    }
+
+    .inicio h1 strong {
+        font-size: 0.76em;
+    }
+}
+
+/* =========================================================
+   CORRECCIÓN FINAL - TARJETAS DE VENTAJAS
+   Muestra la fotografía completa para evitar cortar
+   el logo que aparece en la parte superior de la imagen.
+========================================================= */
+
+.ventaja-imagen {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    background: #111111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ventaja-imagen img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    transform: none;
+    transition:
+        transform 0.6s ease,
+        filter 0.4s ease;
+}
+
+.ventaja:hover .ventaja-imagen img {
+    transform: scale(1.015);
+}
+
+
+/* TABLET */
+@media (max-width: 860px) {
+
+    .ventaja-imagen {
+        height: 250px;
+    }
+
+    .ventaja-imagen img {
+        object-fit: contain !important;
+        object-position: center center !important;
+    }
+}
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .ventaja-imagen {
+        height: 230px;
+    }
+
+    .ventaja-imagen img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain !important;
+        object-position: center center !important;
+    }
+}
+
