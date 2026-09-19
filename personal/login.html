@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acceso al Personal | Laboratorio CJV S.A.C.</title>
+
+    <link rel="stylesheet" href="estilos-personal.css">
+</head>
+
+<body>
+
+    <main class="login">
+
+        <section class="login-contenedor">
+
+            <div class="login-marca">
+                <img
+                    src="../recursos/logo/logo-cjv.png"
+                    alt="Laboratorio CJV S.A.C."
+                    class="login-logo"
+                >
+
+                <span class="login-linea"></span>
+
+                <p>SISTEMA INTERNO</p>
+            </div>
+
+
+            <div class="login-tarjeta">
+
+                <div class="login-encabezado">
+                    <span>ACCESO AUTORIZADO</span>
+
+                    <h1>Acceso al personal</h1>
+
+                    <p>
+                        Ingrese sus credenciales para acceder al
+                        sistema interno de Laboratorio CJV S.A.C.
+                    </p>
+                </div>
+
+
+                <form id="formLogin" autocomplete="on">
+
+                    <div class="campo">
+
+                        <label for="correo">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="correo@ejemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="contrasena">
+                            Contraseña
+                        </label>
+
+                        <div class="campo-contrasena">
+
+                            <input
+                                type="password"
+                                id="contrasena"
+                                name="contrasena"
+                                placeholder="Ingrese su contraseña"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="mostrarContrasena"
+                                class="mostrar-contrasena"
+                                aria-label="Mostrar contraseña"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="mensajeLogin"
+                        class="mensaje-login"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        id="botonIngresar"
+                        class="boton-ingresar"
+                    >
+                        Ingresar al sistema
+                    </button>
+
+                </form>
+
+
+                <div class="login-seguridad">
+                    <span class="seguridad-icono"></span>
+
+                    <p>
+                        Área exclusiva para personal autorizado
+                        de Laboratorio CJV S.A.C.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <a href="../index.html" class="volver-inicio">
+                Volver al sitio web
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.js"></script>
+
+</body>
+</html>

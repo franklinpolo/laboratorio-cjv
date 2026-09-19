@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Panel Interno | Laboratorio CJV S.A.C.</title>
+
+
+
+    <link rel="stylesheet" href="estilos-personal.css">
+
+</head>
+
+
+
+<body class="panel-body">
+
+
+
+    <!-- ==================================================
+
+         BARRA LATERAL
+
+    =================================================== -->
+
+
+
+    <aside class="sidebar">
+
+
+
+        <div class="sidebar-logo">
+
+
+
+            <img
+
+                src="../recursos/logo/logo-cjv.png"
+
+                alt="Laboratorio CJV S.A.C."
+
+            >
+
+
+
+            <span>SISTEMA INTERNO</span>
+
+
+
+        </div>
+
+
+
+
+
+        <nav class="sidebar-menu">
+
+
+
+            <button
+
+                class="menu-item activo"
+
+                data-seccion="dashboard"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">▦</span>
+
+                Dashboard
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="menu-item"
+
+                data-seccion="recepciones"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">▤</span>
+
+                Recepciones
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="menu-item"
+
+                data-seccion="clientes"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">◎</span>
+
+                Clientes
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="menu-item"
+
+                data-seccion="muestras"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">◇</span>
+
+                Muestras
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="menu-item"
+
+                data-seccion="analisis"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">⌁</span>
+
+                Análisis
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="menu-item"
+
+                data-seccion="certificados"
+
+                type="button"
+
+            >
+
+                <span class="menu-icono">▧</span>
+
+                Certificados
+
+            </button>
+
+
+
+        </nav>
+
+
+
+
+
+        <div class="sidebar-footer">
+
+
+
+            <button
+
+                id="cerrarSesion"
+
+                class="boton-cerrar-sesion"
+
+                type="button"
+
+            >
+
+                Cerrar sesión
+
+            </button>
+
+
+
+        </div>
+
+
+
+    </aside>
+
+
+
+
+
+    <!-- ==================================================
+
+         CONTENIDO PRINCIPAL
+
+    =================================================== -->
+
+
+
+    <main class="panel-principal">
+
+
+
+        <!-- CABECERA -->
+
+
+
+        <header class="panel-header">
+
+
+
+            <div>
+
+
+
+                <span class="panel-etiqueta">
+
+                    LABORATORIO CJV S.A.C.
+
+                </span>
+
+
+
+                <h1 id="tituloSeccion">
+
+                    Dashboard
+
+                </h1>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="usuario-panel">
+
+
+
+                <div class="usuario-info">
+
+
+
+                    <span>Personal autorizado</span>
+
+
+
+                    <small id="correoUsuario">
+
+                        Cargando...
+
+                    </small>
+
+
+
+                </div>
+
+
+
+                <div class="usuario-avatar">
+
+                    CJV
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </header>
+
+
+
+
+
+        <!-- ==================================================
+
+             DASHBOARD
+
+        =================================================== -->
+
+
+
+        <section
+
+            id="dashboard"
+
+            class="panel-seccion activa"
+
+        >
+
+
+
+            <div class="bienvenida">
+
+
+
+                <div>
+
+
+
+                    <span class="seccion-etiqueta">
+
+                        RESUMEN GENERAL
+
+                    </span>
+
+
+
+                    <h2>
+
+                        Panel de gestión
+
+                    </h2>
+
+
+
+                    <p>
+
+                        Control del proceso de recepción,
+
+                        análisis y entrega de resultados.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- TARJETAS -->
+
+
+
+            <div class="dashboard-tarjetas">
+
+
+
+                <article class="dashboard-card">
+
+
+
+                    <span class="card-etiqueta">
+
+                        RECEPCIONES
+
+                    </span>
+
+
+
+                    <strong id="totalRecepciones">
+
+                        0
+
+                    </strong>
+
+
+
+                    <p>
+
+                        Registradas en el sistema
+
+                    </p>
+
+
+
+                </article>
+
+
+
+
+
+                <article class="dashboard-card">
+
+
+
+                    <span class="card-etiqueta">
+
+                        MUESTRAS
+
+                    </span>
+
+
+
+                    <strong id="totalMuestras">
+
+                        0
+
+                    </strong>
+
+
+
+                    <p>
+
+                        Total de muestras
+
+                    </p>
+
+
+
+                </article>
+
+
+
+
+
+                <article class="dashboard-card">
+
+
+
+                    <span class="card-etiqueta">
+
+                        EN ANÁLISIS
+
+                    </span>
+
+
+
+                    <strong id="muestrasAnalisis">
+
+                        0
+
+                    </strong>
+
+
+
+                    <p>
+
+                        Actualmente en proceso
+
+                    </p>
+
+
+
+                </article>
+
+
+
+
+
+                <article class="dashboard-card">
+
+
+
+                    <span class="card-etiqueta">
+
+                        FINALIZADAS
+
+                    </span>
+
+
+
+                    <strong id="muestrasFinalizadas">
+
+                        0
+
+                    </strong>
+
+
+
+                    <p>
+
+                        Análisis finalizados
+
+                    </p>
+
+
+
+                </article>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ACTIVIDAD -->
+
+
+
+            <div class="panel-bloque">
+
+
+
+                <div class="bloque-header">
+
+
+
+                    <div>
+
+
+
+                        <span class="seccion-etiqueta">
+
+                            ACTIVIDAD
+
+                        </span>
+
+
+
+                        <h3>
+
+                            Recepciones recientes
+
+                        </h3>
+
+
+
+                    </div>
+
+
+
+
+
+                    <button
+
+                        class="boton-principal"
+
+                        id="nuevaRecepcionDashboard"
+
+                        type="button"
+
+                    >
+
+                        Nueva recepción
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="tabla-contenedor">
+
+
+
+                    <table>
+
+
+
+                        <thead>
+
+
+
+                            <tr>
+
+                                <th>N.º recepción</th>
+
+                                <th>Cliente</th>
+
+                                <th>Fecha</th>
+
+                                <th>Total</th>
+
+                                <th>Pago</th>
+
+                            </tr>
+
+
+
+                        </thead>
+
+
+
+                        <tbody id="tablaRecepcionesDashboard">
+
+
+
+                            <tr>
+
+
+
+                                <td
+
+                                    colspan="5"
+
+                                    class="tabla-vacia"
+
+                                >
+
+                                    No hay recepciones registradas.
+
+                                </td>
+
+
+
+                            </tr>
+
+
+
+                        </tbody>
+
+
+
+                    </table>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+        <!-- ==================================================
+
+     RECEPCIONES
+
+\=================================================== -->
+
+
+
+<section
+
+    id="recepciones"
+
+    class="panel-seccion"
+
+>
+
+
+
+    <!-- ENCABEZADO -->
+
+
+
+    <div class="seccion-header">
+
+
+
+        <div>
+
+            <span class="seccion-etiqueta">
+
+                GESTIÓN
+
+            </span>
+
+
+
+            <h2>Recepciones</h2>
+
+
+
+            <p>
+
+                Registro y seguimiento de las recepciones de muestras.
+
+            </p>
+
+        </div>
+
+
+
+        <button
+
+            id="nuevaRecepcion"
+
+            class="boton-principal"
+
+            type="button"
+
+        >
+
+            Nueva recepción
+
+        </button>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ==============================================
+
+         FORMULARIO NUEVA RECEPCIÓN
+
+    =============================================== -->
+
+
+
+    <div
+
+        id="contenedorNuevaRecepcion"
+
+        class="formulario-recepcion oculto"
+
+    >
+
+
+
+        <div class="formulario-cabecera">
+
+
+
+            <div>
+
+                <span class="seccion-etiqueta">
+
+                    NUEVO REGISTRO
+
+                </span>
+
+
+
+                <h3>Nueva recepción de muestras</h3>
+
+
+
+                <p>
+
+                    Complete los datos proporcionados por el cliente.
+
+                </p>
+
+            </div>
+
+
+
+            <button
+
+                id="cerrarFormularioRecepcion"
+
+                class="boton-cerrar-formulario"
+
+                type="button"
+
+                aria-label="Cerrar formulario"
+
+            >
+
+                ×
+
+            </button>
+
+
+
+        </div>
+
+
+
+
+
+        <form id="formRecepcion">
+
+
+
+            <!-- ======================================
+
+                 DATOS DEL CLIENTE
+
+            ======================================= -->
+
+
+
+            <div class="formulario-seccion">
+
+
+
+                <div class="formulario-titulo">
+
+
+
+                    <span>01</span>
+
+
+
+                    <div>
+
+                        <h4>Datos del cliente</h4>
+
+
+
+                        <p>
+
+                            Información del cliente que entrega
+
+                            las muestras.
+
+                        </p>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="formulario-grid">
+
+
+
+                    <div class="campo-panel campo-panel-grande">
+
+
+
+                        <label for="clienteNombre">
+
+                            Cliente / Razón social *
+
+                        </label>
+
+
+
+                        <input
+
+                            type="text"
+
+                            id="clienteNombre"
+
+                            maxlength="200"
+
+                            required
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="clienteRuc">
+
+                            RUC
+
+                        </label>
+
+
+
+                        <input
+
+                            type="text"
+
+                            id="clienteRuc"
+
+                            maxlength="11"
+
+                            inputmode="numeric"
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="clienteTelefono">
+
+                            Teléfono
+
+                        </label>
+
+
+
+                        <input
+
+                            type="tel"
+
+                            id="clienteTelefono"
+
+                            maxlength="20"
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="clienteCorreo">
+
+                            Correo electrónico
+
+                        </label>
+
+
+
+                        <input
+
+                            type="email"
+
+                            id="clienteCorreo"
+
+                            maxlength="150"
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel campo-panel-grande">
+
+
+
+                        <label for="clienteDireccion">
+
+                            Dirección
+
+                        </label>
+
+
+
+                        <input
+
+                            type="text"
+
+                            id="clienteDireccion"
+
+                            maxlength="250"
+
+                        >
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ======================================
+
+                 DATOS DE RECEPCIÓN
+
+            ======================================= -->
+
+
+
+            <div class="formulario-seccion">
+
+
+
+                <div class="formulario-titulo">
+
+
+
+                    <span>02</span>
+
+
+
+                    <div>
+
+                        <h4>Datos de recepción</h4>
+
+
+
+                        <p>
+
+                            Información general de la recepción.
+
+                        </p>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="formulario-grid">
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="numeroRecepcion">
+
+                            N.º de recepción *
+
+                        </label>
+
+
+
+                        <input
+
+                            type="text"
+
+                            id="numeroRecepcion"
+
+                            placeholder="Se generará automáticamente"
+
+                            readonly
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="fechaRecepcion">
+
+                            Fecha *
+
+                        </label>
+
+
+
+                        <input
+
+                            type="date"
+
+                            id="fechaRecepcion"
+
+                            required
+
+                        >
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel">
+
+
+
+                        <label for="estadoPago">
+
+                            Estado de pago *
+
+                        </label>
+
+
+
+                        <select
+
+                            id="estadoPago"
+
+                            required
+
+                        >
+
+                            <option value="PENDIENTE">
+
+                                Pendiente
+
+                            </option>
+
+
+
+                            <option value="CANCELADO">
+
+                                Cancelado
+
+                            </option>
+
+                        </select>
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="campo-panel campo-panel-grande">
+
+
+
+                        <label for="observacionesRecepcion">
+
+                            Observaciones
+
+                        </label>
+
+
+
+                        <textarea
+
+                            id="observacionesRecepcion"
+
+                            rows="3"
+
+                            placeholder="Observaciones adicionales..."
+
+                        ></textarea>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ======================================
+
+                 MUESTRAS
+
+            ======================================= -->
+
+
+
+            <div class="formulario-seccion">
+
+
+
+                <div class="formulario-titulo formulario-titulo-accion">
+
+
+
+                    <div class="formulario-titulo">
+
+
+
+                        <span>03</span>
+
+
+
+                        <div>
+
+                            <h4>Muestras y análisis</h4>
+
+
+
+                            <p>
+
+                                Una recepción puede contener una
+
+                                o varias muestras.
+
+                            </p>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <button
+
+                        type="button"
+
+                        id="agregarMuestra"
+
+                        class="boton-secundario"
+
+                    >
+
+                        Agregar muestra
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- AQUÍ JS AGREGARÁ LAS MUESTRAS -->
+
+
+
+                <div id="listaMuestras">
+
+
+
+                    <article
+
+                        class="muestra-formulario"
+
+                        data-muestra="1"
+
+                    >
+
+
+
+                        <div class="muestra-cabecera">
+
+
+
+                            <div>
+
+                                <span class="muestra-numero">
+
+                                    MUESTRA 01
+
+                                </span>
+
+
+
+                                <h5>
+
+                                    Información de la muestra
+
+                                </h5>
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="formulario-grid">
+
+
+
+                            <div class="campo-panel">
+
+
+
+                                <label>
+
+                                    Código de muestra *
+
+                                </label>
+
+
+
+                                <input
+
+                                    type="text"
+
+                                    class="codigo-muestra"
+
+                                    maxlength="100"
+
+                                    placeholder="Código proporcionado por el cliente"
+
+                                    required
+
+                                >
+
+
+
+                                <small>
+
+                                    Este código es proporcionado
+
+                                    por el cliente y no puede repetirse.
+
+                                </small>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="campo-panel campo-panel-grande">
+
+
+
+                                <label>
+
+                                    Descripción
+
+                                </label>
+
+
+
+                                <input
+
+                                    type="text"
+
+                                    class="descripcion-muestra"
+
+                                    placeholder="Descripción de la muestra"
+
+                                >
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                        <!-- ANÁLISIS DE LA MUESTRA -->
+
+
+
+                        <div class="analisis-muestra">
+
+
+
+                            <div class="analisis-encabezado">
+
+
+
+                                <div>
+
+                                    <strong>
+
+                                        Análisis solicitados
+
+                                    </strong>
+
+
+
+                                    <small>
+
+                                        Puede agregar varios análisis
+
+                                        para esta muestra.
+
+                                    </small>
+
+                                </div>
+
+
+
+                                <button
+
+                                    type="button"
+
+                                    class="boton-agregar-analisis"
+
+                                >
+
+                                    Agregar análisis
+
+                                </button>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="lista-analisis">
+
+
+
+                                <div class="fila-analisis">
+
+
+
+                                    <div class="campo-panel">
+
+
+
+                                        <label>
+
+                                            Tipo de análisis *
+
+                                        </label>
+
+
+
+                                        <select
+
+                                            class="tipo-analisis"
+
+                                            required
+
+                                        >
+
+                                            <option value="">
+
+                                                Seleccionar análisis
+
+                                            </option>
+
+                                        </select>
+
+
+
+                                    </div>
+
+
+
+
+
+                                    <div class="campo-panel">
+
+
+
+                                        <label>
+
+                                            Precio S/ *
+
+                                        </label>
+
+
+
+                                        <input
+
+                                            type="number"
+
+                                            class="precio-analisis"
+
+                                            min="0"
+
+                                            step="0.01"
+
+                                            placeholder="0.00"
+
+                                            required
+
+                                        >
+
+
+
+                                    </div>
+
+
+
+
+
+                                    <button
+
+                                        type="button"
+
+                                        class="boton-eliminar-analisis"
+
+                                        title="Eliminar análisis"
+
+                                    >
+
+                                        ×
+
+                                    </button>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </article>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ======================================
+
+                 TOTAL
+
+            ======================================= -->
+
+
+
+            <div class="recepcion-total">
+
+
+
+                <div>
+
+                    <span>TOTAL RECEPCIÓN</span>
+
+
+
+                    <strong id="totalRecepcion">
+
+                        S/ 0.00
+
+                    </strong>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ======================================
+
+                 MENSAJE
+
+            ======================================= -->
+
+
+
+            <div
+
+                id="mensajeRecepcion"
+
+                class="mensaje-formulario"
+
+                aria-live="polite"
+
+            ></div>
+
+
+
+
+
+            <!-- ======================================
+
+                 BOTONES
+
+            ======================================= -->
+
+
+
+            <div class="formulario-acciones">
+
+
+
+                <button
+
+                    type="button"
+
+                    id="cancelarRecepcion"
+
+                    class="boton-cancelar"
+
+                >
+
+                    Cancelar
+
+                </button>
+
+
+
+
+
+                <button
+
+                    type="submit"
+
+                    id="guardarRecepcion"
+
+                    class="boton-principal"
+
+                >
+
+                    Guardar recepción
+
+                </button>
+
+
+
+            </div>
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ==============================================
+
+         TABLA DE RECEPCIONES
+
+    =============================================== -->
+
+
+
+    <div
+
+        id="contenedorTablaRecepciones"
+
+        class="panel-bloque"
+
+    >
+
+
+
+        <div class="tabla-contenedor">
+
+
+
+            <table>
+
+
+
+                <thead>
+
+
+
+                    <tr>
+
+                        <th>N.º recepción</th>
+
+                        <th>Cliente</th>
+
+                        <th>Fecha</th>
+
+                        <th>Total</th>
+
+                        <th>Pago</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+
+
+                </thead>
+
+
+
+                <tbody id="tablaRecepciones">
+
+
+
+                    <tr>
+
+
+
+                        <td
+
+                            colspan="6"
+
+                            class="tabla-vacia"
+
+                        >
+
+                            No hay recepciones registradas.
+
+                        </td>
+
+
+
+                    </tr>
+
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+
+        </div>
+
+
+
+    </div>
+<!-- DETALLE DE RECEPCIÓN -->
+<div id="detalleRecepcion" class="detalle-recepcion oculto">
+
+    <div class="detalle-recepcion-contenido">
+
+        <div class="detalle-recepcion-encabezado">
+            <div>
+                <span class="detalle-etiqueta">RECEPCIÓN</span>
+                <h3 id="detalleNumeroRecepcion">N.º ------</h3>
+            </div>
+
+            <button
+                type="button"
+                id="cerrarDetalleRecepcion"
+                class="cerrar-detalle"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="detalle-recepcion-grid">
+
+            <div class="detalle-dato">
+                <span>Cliente</span>
+                <strong id="detalleCliente">-</strong>
+            </div>
+
+            <div class="detalle-dato">
+                <span>RUC</span>
+                <strong id="detalleRuc">-</strong>
+            </div>
+
+            <div class="detalle-dato">
+                <span>Teléfono</span>
+                <strong id="detalleTelefono">-</strong>
+            </div>
+
+            <div class="detalle-dato">
+                <span>Correo</span>
+                <strong id="detalleCorreo">-</strong>
+            </div>
+
+            <div class="detalle-dato">
+                <span>Fecha de recepción</span>
+                <strong id="detalleFecha">-</strong>
+            </div>
+
+            <div class="detalle-dato">
+                <span>Estado de pago</span>
+                <strong id="detallePago">-</strong>
+            </div>
+
+        </div>
+
+        <div class="detalle-bloque">
+
+            <h4>Muestras y análisis</h4>
+
+            <div id="detalleMuestras">
+                <!-- Se llenará desde panel.js -->
+            </div>
+
+        </div>
+
+        <div class="detalle-recepcion-pie">
+
+            <div>
+                <span>Total recepción</span>
+                <strong id="detalleTotal">S/ 0.00</strong>
+            </div>
+
+            <button
+                type="button"
+                id="cerrarDetalleRecepcionPie"
+                class="boton-secundario"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+        <!-- ==================================================
+
+             CLIENTES
+
+        =================================================== -->
+
+
+
+        <section
+
+            id="clientes"
+
+            class="panel-seccion"
+
+        >
+
+
+
+            <div class="seccion-header">
+
+
+
+                <div>
+
+
+
+                    <span class="seccion-etiqueta">
+
+                        REGISTROS
+
+                    </span>
+
+
+
+                    <h2>
+
+                        Clientes
+
+                    </h2>
+
+
+
+                    <p>
+
+                        Información e historial de clientes.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="panel-bloque">
+
+
+
+                <div class="tabla-contenedor">
+
+
+
+                    <table>
+
+
+
+                        <thead>
+
+
+
+                            <tr>
+
+                                <th>Cliente</th>
+
+                                <th>RUC</th>
+
+                                <th>Teléfono</th>
+
+                                <th>Correo</th>
+
+                                <th>Acciones</th>
+
+                            </tr>
+
+
+
+                        </thead>
+
+
+
+                        <tbody id="tablaClientes">
+
+
+
+                            <tr>
+
+
+
+                                <td
+
+                                    colspan="5"
+
+                                    class="tabla-vacia"
+
+                                >
+
+                                    No hay clientes registrados.
+
+                                </td>
+
+
+
+                            </tr>
+
+
+
+                        </tbody>
+
+
+
+                    </table>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+        <!-- ==================================================
+
+             MUESTRAS
+
+        =================================================== -->
+
+
+
+        <section
+
+            id="muestras"
+
+            class="panel-seccion"
+
+        >
+
+
+
+            <div class="seccion-header">
+
+
+
+                <div>
+
+
+
+                    <span class="seccion-etiqueta">
+
+                        LABORATORIO
+
+                    </span>
+
+
+
+                    <h2>
+
+                        Muestras
+
+                    </h2>
+
+
+
+                    <p>
+
+                        Seguimiento del estado de cada muestra.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="panel-bloque">
+
+
+
+                <div class="tabla-contenedor">
+
+
+
+                    <table>
+
+
+
+                        <thead>
+
+
+
+                            <tr>
+
+                                <th>Código</th>
+
+                                <th>Recepción</th>
+
+                                <th>Descripción</th>
+
+                                <th>Estado</th>
+
+                                <th>Acciones</th>
+
+                            </tr>
+
+
+
+                        </thead>
+
+
+
+                        <tbody id="tablaMuestras">
+
+
+
+                            <tr>
+
+
+
+                                <td
+
+                                    colspan="5"
+
+                                    class="tabla-vacia"
+
+                                >
+
+                                    No hay muestras registradas.
+
+                                </td>
+
+
+
+                            </tr>
+
+
+
+                        </tbody>
+
+
+
+                    </table>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+        <!-- ==================================================
+             ANÁLISIS
+        =================================================== -->
+
+        <section
+            id="analisis"
+            class="panel-seccion"
+        >
+
+            <div class="seccion-header">
+
+                <div>
+                    <span class="seccion-etiqueta">
+                        LABORATORIO
+                    </span>
+
+                    <h2>Catálogo de análisis</h2>
+
+                    <p>
+                        Registre y administre los tipos de análisis
+                        disponibles en Laboratorio CJV S.A.C.
+                    </p>
+                </div>
+
+                <button
+                    id="nuevoTipoAnalisis"
+                    class="boton-principal"
+                    type="button"
+                >
+                    Nuevo análisis
+                </button>
+
+            </div>
+
+            <div
+                id="contenedorNuevoAnalisis"
+                class="formulario-recepcion oculto"
+            >
+
+                <div class="formulario-cabecera">
+                    <div>
+                        <span class="seccion-etiqueta">CATÁLOGO</span>
+                        <h3>Registrar tipo de análisis</h3>
+                        <p>
+                            Complete los datos del análisis que ofrece
+                            Laboratorio CJV S.A.C.
+                        </p>
+                    </div>
+
+                    <button
+                        id="cerrarFormularioAnalisis"
+                        class="boton-cerrar-formulario"
+                        type="button"
+                        aria-label="Cerrar formulario"
+                    >
+                        ×
+                    </button>
+                </div>
+
+                <form id="formTipoAnalisis">
+
+                    <div class="formulario-seccion">
+                        <div class="formulario-grid">
+
+                            <div class="campo-panel campo-panel-grande">
+                                <label for="nombreTipoAnalisis">
+                                    Nombre del análisis *
+                                </label>
+                                <input
+                                    type="text"
+                                    id="nombreTipoAnalisis"
+                                    maxlength="150"
+                                    placeholder="Ingrese el nombre del análisis"
+                                    required
+                                >
+                            </div>
+
+                            <div class="campo-panel">
+                                <label for="precioTipoAnalisis">
+                                    Precio referencial S/
+                                </label>
+                                <input
+                                    type="number"
+                                    id="precioTipoAnalisis"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0.00"
+                                >
+                            </div>
+
+                            <div class="campo-panel campo-panel-grande">
+                                <label for="descripcionTipoAnalisis">
+                                    Descripción
+                                </label>
+                                <textarea
+                                    id="descripcionTipoAnalisis"
+                                    rows="3"
+                                    placeholder="Descripción opcional del análisis"
+                                ></textarea>
+                            </div>
+
+                            <div class="campo-panel">
+                                <label for="estadoTipoAnalisis">Estado *</label>
+                                <select id="estadoTipoAnalisis" required>
+                                    <option value="true">Activo</option>
+                                    <option value="false">Inactivo</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div
+                        id="mensajeTipoAnalisis"
+                        class="mensaje-formulario"
+                        aria-live="polite"
+                    ></div>
+
+                    <div class="formulario-acciones">
+                        <button
+                            type="button"
+                            id="cancelarTipoAnalisis"
+                            class="boton-cancelar"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="guardarTipoAnalisis"
+                            class="boton-principal"
+                        >
+                            Guardar análisis
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div
+                id="contenedorTablaAnalisis"
+                class="panel-bloque"
+            >
+                <div class="bloque-header">
+                    <div>
+                        <span class="seccion-etiqueta">CATÁLOGO</span>
+                        <h3>Tipos de análisis</h3>
+                    </div>
+                </div>
+
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Análisis</th>
+                                <th>Descripción</th>
+                                <th>Precio referencial</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaTiposAnalisis">
+                            <tr>
+                                <td colspan="5" class="tabla-vacia">
+                                    No hay tipos de análisis registrados.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- ========================================== -->
+<!-- ANÁLISIS SOLICITADOS / EN PROCESO -->
+<!-- ========================================== -->
+
+<div class="analisis-solicitados-bloque">
+
+    <div class="panel-encabezado-secundario">
+        <div>
+            <span class="panel-etiqueta">LABORATORIO</span>
+            <h2>Análisis solicitados</h2>
+            <p>Gestione los análisis pendientes y registre sus resultados.</p>
+        </div>
+    </div>
+
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Muestra</th>
+                    <th>Análisis</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaAnalisisSolicitados">
+                <tr>
+                    <td colspan="5" class="tabla-vacia">
+                        No hay análisis solicitados.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+                </div>
+            </div>
+
+        </section>
+<!-- MODAL REGISTRAR RESULTADO -->
+<div id="modalResultado" class="detalle-overlay oculto">
+
+    <div class="detalle-modal">
+
+        <div class="detalle-cabecera">
+            <div>
+                <span class="detalle-etiqueta">ANÁLISIS</span>
+                <h2 id="resultadoTitulo">Registrar resultado</h2>
+            </div>
+
+            <button
+                type="button"
+                id="cerrarModalResultado"
+                class="detalle-cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="detalle-contenido">
+
+            <div class="detalle-grid">
+
+                <div class="detalle-dato">
+                    <span>MUESTRA</span>
+                    <strong id="resultadoMuestra">-</strong>
+                </div>
+
+                <div class="detalle-dato">
+                    <span>ANÁLISIS</span>
+                    <strong id="resultadoAnalisis">-</strong>
+                </div>
+
+            </div>
+
+            <form id="formResultado">
+
+                <input
+                    type="hidden"
+                    id="resultadoAnalisisId"
+                >
+
+                <div id="listaResultados">
+
+                    <div class="resultado-fila">
+
+                        <div class="campo-formulario">
+                            <label>Parámetro</label>
+                            <input
+                                type="text"
+                                class="resultado-parametro"
+                                placeholder="Ej. Au"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label>Resultado</label>
+                            <input
+                                type="text"
+                                class="resultado-valor"
+                                placeholder="Ej. 2.50"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label>Unidad</label>
+                            <input
+                                type="text"
+                                class="resultado-unidad"
+                                placeholder="Ej. g/t"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="agregarFilaResultado"
+                    class="boton-secundario"
+                >
+                    + Agregar resultado
+                </button>
+
+                <div class="campo-formulario">
+                    <label>Observaciones</label>
+                    <textarea
+                        id="resultadoObservaciones"
+                        rows="3"
+                        placeholder="Observaciones del análisis"
+                    ></textarea>
+                </div>
+
+                <div
+                    id="mensajeResultado"
+                    class="mensaje-formulario"
+                ></div>
+
+                <div class="acciones-formulario">
+
+                    <button
+                        type="button"
+                        id="cancelarResultado"
+                        class="boton-secundario"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="guardarResultado"
+                        class="boton-principal"
+                    >
+                        Guardar resultado
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+
+             CERTIFICADOS
+
+        =================================================== -->
+
+
+
+        <section
+
+            id="certificados"
+
+            class="panel-seccion"
+
+        >
+
+
+
+            <div class="seccion-header">
+
+
+
+                <div>
+
+
+
+                    <span class="seccion-etiqueta">
+
+                        DOCUMENTOS
+
+                    </span>
+
+
+
+                    <h2>
+
+                        Certificados
+
+                    </h2>
+
+
+
+                    <p>
+
+                        Generación y control de certificados
+
+                        de análisis.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="panel-bloque">
+
+
+
+                <div class="estado-vacio">
+
+
+
+                    <h3>
+
+                        Certificados de análisis
+
+                    </h3>
+
+
+
+                    <p>
+
+                        Los certificados generados aparecerán
+
+                        en esta sección.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+
+
+    <!-- SUPABASE -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- ============================================ -->
+<!-- MODAL DETALLE DE MUESTRA -->
+<!-- ============================================ -->
+
+<div id="detalleMuestra" class="detalle-recepcion oculto">
+
+    <div class="detalle-recepcion-fondo"></div>
+
+    <div class="detalle-recepcion-modal">
+
+        <div class="detalle-recepcion-cabecera">
+
+            <div>
+                <span class="detalle-etiqueta">MUESTRA</span>
+                <h2 id="detalleMuestraCodigo">Código</h2>
+            </div>
+
+            <button
+                type="button"
+                id="cerrarDetalleMuestra"
+                class="detalle-cerrar"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="detalle-recepcion-contenido">
+
+            <div class="detalle-grid">
+
+                <div class="detalle-dato">
+                    <span>RECEPCIÓN</span>
+                    <strong id="detalleMuestraRecepcion">-</strong>
+                </div>
+
+                <div class="detalle-dato">
+                    <span>ESTADO</span>
+                    <strong id="detalleMuestraEstado">-</strong>
+                </div>
+
+            </div>
+
+            <div class="detalle-dato detalle-dato-completo">
+                <span>DESCRIPCIÓN</span>
+                <strong id="detalleMuestraDescripcion">-</strong>
+            </div>
+
+            <h3 class="detalle-subtitulo">
+                Análisis solicitados
+            </h3>
+
+            <div id="detalleMuestraAnalisis">
+                <!-- Los análisis se cargarán con JavaScript -->
+            </div>
+
+        </div>
+
+        <div class="detalle-recepcion-pie">
+
+            <button
+                type="button"
+                id="cerrarDetalleMuestraPie"
+                class="boton-secundario"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- JAVASCRIPT DEL PANEL -->
+
+
+
+    <script src="panel.js"></script>
+
+
+
+</body>
+
+</html>
