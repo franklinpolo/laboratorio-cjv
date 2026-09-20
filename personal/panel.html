@@ -2565,32 +2565,14 @@
 
 
             <div class="panel-bloque">
+<div id="listaCertificados" class="lista-certificados">
 
+    <div class="estado-vacio">
+        <h3>Certificados de análisis</h3>
+        <p>Cargando certificados...</p>
+    </div>
 
-
-                <div class="estado-vacio">
-
-
-
-                    <h3>
-
-                        Certificados de análisis
-
-                    </h3>
-
-
-
-                    <p>
-
-                        Los certificados generados aparecerán
-
-                        en esta sección.
-
-                    </p>
-
-
-
-                </div>
+</div>
 
 
 
@@ -2604,7 +2586,70 @@
 
     </main>
 
+<!-- ======================================================
+     MODAL INFORMACIÓN DEL CLIENTE
+     ====================================================== -->
 
+<div id="modalCliente" class="modal oculto">
+
+    <div class="modal-contenido">
+
+        <button
+            type="button"
+            class="modal-cerrar"
+            id="cerrarModalCliente">
+            ×
+        </button>
+
+        <div class="modal-encabezado">
+            <span>CLIENTE</span>
+            <h2>Información del cliente</h2>
+            <p>Datos registrados del cliente.</p>
+        </div>
+
+        <div class="cliente-detalles">
+
+            <div class="cliente-dato">
+                <span>CLIENTE</span>
+                <strong id="clienteNombreModal">-</strong>
+            </div>
+
+            <div class="cliente-dato">
+                <span>RUC</span>
+                <strong id="clienteRucModal">-</strong>
+            </div>
+
+            <div class="cliente-dato">
+                <span>TELÉFONO</span>
+                <strong id="clienteTelefonoModal">-</strong>
+            </div>
+
+            <div class="cliente-dato">
+                <span>CORREO</span>
+                <strong id="clienteCorreoModal">-</strong>
+            </div>
+
+            <div class="cliente-dato cliente-dato-completo">
+                <span>DIRECCIÓN</span>
+                <strong id="clienteDireccionModal">-</strong>
+            </div>
+
+        </div>
+
+        <div class="modal-acciones">
+
+            <button
+                type="button"
+                class="boton-secundario"
+                id="cerrarModalClienteBtn">
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -2691,7 +2736,7 @@
     <!-- JAVASCRIPT DEL PANEL -->
 
 
-
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="panel.js"></script>
 
 

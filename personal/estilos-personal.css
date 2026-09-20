@@ -2787,30 +2787,68 @@ body {
 }
 
 #modalResultado .detalle-modal {
-    width: min(850px, 95vw);
-    max-height: 90vh;
+    width: min(900px, 92vw);
+    max-height: 88vh;
     overflow-y: auto;
-    background: #10100f;
-    border: 1px solid rgba(255, 196, 0, 0.55);
+    background: #101010;
+    border: 1px solid rgba(255, 196, 0, 0.7);
     border-radius: 18px;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+#modalResultado .resultado-fila {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.8fr;
+    gap: 14px;
+    padding: 18px;
+    margin-top: 14px;
+    background: #181818;
+    border: 1px solid #292929;
+    border-radius: 14px;
+}
+
+#modalResultado .campo-formulario label {
+    display: block;
+    margin-bottom: 7px;
+    color: #ffc400;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#modalResultado .campo-formulario input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border-radius: 9px;
+    border: 1px solid #333;
+    background: #0b0b0b;
+    color: #fff;
+}
+
+#modalResultado #listaResultados {
+    margin-bottom: 8px;
+}
+
+#modalResultado textarea {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Encabezado */
 
 #modalResultado .detalle-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 24px 28px;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    padding: 20px 24px;
     border-bottom: 1px solid #292929;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255, 196, 0, 0.10),
-            transparent 55%
-        );
+    background: linear-gradient(
+        90deg,
+        rgba(255, 196, 0, 0.10),
+        transparent 55%
+    );
 }
 
 #modalResultado .detalle-header h2 {
@@ -3090,4 +3128,468 @@ body {
     #modalResultado .detalle-acciones button {
         width: 100%;
     }
+}
+/* ==========================================
+   MEJORA FINAL - FORMULARIO REGISTRAR RESULTADO
+   ========================================== */
+
+#modalResultado .detalle-modal {
+    width: min(900px, 94vw);
+    max-height: 92vh;
+    background: #101010;
+    border: 1px solid rgba(255, 196, 0, 0.65);
+    border-radius: 18px;
+    overflow-y: auto;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
+}
+
+#modalResultado .detalle-header {
+    padding: 22px 28px;
+    border-bottom: 1px solid #292929;
+}
+
+#modalResultado .detalle-header h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+#modalResultado .detalle-contenido {
+    padding: 24px 28px;
+}
+
+/* Información de muestra y análisis */
+#modalResultado .detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+#modalResultado .detalle-grid > div {
+    background: #181818;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+/* Lista de resultados */
+#listaResultados {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+#listaResultados .resultado-fila {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.8fr;
+    gap: 14px;
+    padding: 18px;
+    background: #181818;
+    border: 1px solid #303030;
+    border-radius: 12px;
+}
+
+/* Campos */
+#modalResultado .campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#modalResultado .campo-formulario label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffc400;
+}
+
+#modalResultado input,
+#modalResultado textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #0b0b0b;
+    color: #fff;
+    border: 1px solid #3a3a3a;
+    border-radius: 9px;
+    padding: 12px 13px;
+    font-size: 14px;
+    outline: none;
+}
+
+#modalResultado input:focus,
+#modalResultado textarea:focus {
+    border-color: #ffc400;
+    box-shadow: 0 0 0 2px rgba(255, 196, 0, 0.12);
+}
+
+/* Agregar resultado */
+#modalResultado #listaResultados + button,
+#modalResultado button[type="button"] {
+    border-radius: 9px;
+}
+
+/* Observaciones */
+#modalResultado textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* Botones finales */
+#modalResultado .acciones-formulario,
+#modalResultado .detalle-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 28px 24px;
+    border-top: 1px solid #292929;
+}
+
+#modalResultado .acciones-formulario button,
+#modalResultado .detalle-acciones button {
+    min-width: 150px;
+    padding: 12px 20px;
+    border-radius: 9px;
+}
+
+/* Celular */
+@media (max-width: 700px) {
+
+    #modalResultado .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #listaResultados .resultado-fila {
+        grid-template-columns: 1fr;
+    }
+
+    #modalResultado .detalle-contenido {
+        padding: 18px;
+    }
+
+    #modalResultado .acciones-formulario,
+    #modalResultado .detalle-acciones {
+        flex-direction: column;
+    }
+
+    #modalResultado .acciones-formulario button,
+    #modalResultado .detalle-acciones button {
+        width: 100%;
+    }
+}
+
+/* CENTRAR ENCABEZADO DEL MODAL REGISTRAR RESULTADO */
+#modalResultado .detalle-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+    padding: 18px 24px;
+}
+
+#modalResultado .detalle-header h2 {
+    text-align: center;
+    margin: 0;
+}
+
+#modalResultado .detalle-header .eyebrow {
+    text-align: center;
+    margin: 0;
+}
+
+/* CENTRAR ENCABEZADO DEL MODAL REGISTRAR RESULTADO */
+
+#modalResultado .detalle-header {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100%;
+    padding: 20px 24px;
+}
+
+#modalResultado .detalle-header > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+}
+
+#modalResultado .detalle-header h2 {
+    width: 100%;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+#modalResultado .detalle-header span,
+#modalResultado .detalle-header small,
+#modalResultado .detalle-header .eyebrow {
+    width: 100%;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+/* =========================================================
+   AJUSTE DEFINITIVO - TITULO MODAL RESULTADO
+   ========================================================= */
+
+#modalResultado .detalle-header {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    padding: 20px 24px !important;
+    text-align: center !important;
+}
+
+#modalResultado .detalle-header h2 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+#modalResultado .detalle-header span,
+#modalResultado .detalle-header small,
+#modalResultado .detalle-header .eyebrow {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto 5px auto !important;
+    text-align: center !important;
+}
+/* CENTRAR ENCABEZADO DEL MODAL REGISTRAR RESULTADO */
+#modalResultado .detalle-header {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    text-align: center;
+}
+
+#modalResultado .detalle-header > div {
+    width: 100%;
+    text-align: center;
+}
+
+#modalResultado .detalle-header h2 {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#modalResultado .detalle-header span,
+#modalResultado .detalle-header small {
+    display: block;
+    text-align: center;
+}
+/* CENTRAR TITULO DEL MODAL REGISTRAR RESULTADO */
+#modalResultado .detalle-cabecera {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#modalResultado .detalle-cabecera > div {
+    width: 100%;
+    text-align: center;
+}
+
+#modalResultado .detalle-cabecera .detalle-etiqueta,
+#modalResultado .detalle-cabecera h2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#modalResultado .detalle-cabecera .detalle-cerrar {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ======================================================
+   MODAL INFORMACIÓN DEL CLIENTE
+   ====================================================== */
+
+#modalCliente {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+}
+
+#modalCliente.oculto {
+    display: none;
+}
+
+#modalCliente .modal-contenido {
+    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+
+    padding: 32px;
+
+    background: #111111;
+    border: 1px solid #f5c400;
+    border-radius: 16px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+    color: #ffffff;
+}
+
+#modalCliente .modal-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    background: #181818;
+    color: #ffffff;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#modalCliente .modal-cerrar:hover {
+    background: #f5c400;
+    color: #000000;
+}
+
+#modalCliente .modal-encabezado {
+    margin-bottom: 25px;
+}
+
+#modalCliente .modal-encabezado span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #f5c400;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+#modalCliente .modal-encabezado h2 {
+    margin: 0;
+
+    font-size: 28px;
+    color: #ffffff;
+}
+
+#modalCliente .modal-encabezado p {
+    margin-top: 8px;
+
+    color: #999999;
+}
+
+#modalCliente .cliente-detalles {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+#modalCliente .cliente-dato {
+    padding: 16px;
+
+    background: #181818;
+
+    border: 1px solid #2d2d2d;
+    border-radius: 10px;
+}
+
+#modalCliente .cliente-dato span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #f5c400;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#modalCliente .cliente-dato strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    word-break: break-word;
+}
+
+#modalCliente .cliente-dato-completo {
+    grid-column: 1 / -1;
+}
+
+#modalCliente .modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+#modalCliente .boton-secundario {
+    padding: 11px 24px;
+
+    border: 1px solid #f5c400;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #f5c400;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#modalCliente .boton-secundario:hover {
+    background: #f5c400;
+    color: #000000;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    #modalCliente .modal-contenido {
+        padding: 25px 20px;
+    }
+
+    #modalCliente .cliente-detalles {
+        grid-template-columns: 1fr;
+    }
+
+    #modalCliente .cliente-dato-completo {
+        grid-column: auto;
+    }
+
 }
