@@ -710,8 +710,22 @@ botonesAcordeon.forEach(
 
 
 // =========================================================
-// SEGUIMIENTO
+// SEGUIMIENTO REAL - SUPABASE
 // =========================================================
+
+const SUPABASE_URL =
+    "https://xhyejqperbzrhrwikhfa.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_gZVHUeFgv3yZIRxQ7FUJOQ_wyuI9s2x";
+
+
+const supabasePublico =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
 
 const inputSeguimiento =
     document.getElementById(
@@ -732,11 +746,134 @@ const resultadoSeguimiento =
 
 
 
-function consultarSeguimiento() {
+function escaparSeguimiento(valor) {
+
+    return String(valor ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+
+function formatearFechaSeguimiento(valor) {
+
+    if (!valor) {
+        return "-";
+    }
+
+    const partes =
+        String(valor).split("-");
+
+    if (partes.length === 3) {
+
+        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+    }
+
+    return valor;
+
+}
+
+function cargarSeguimientoDesdeURL() {
+
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const numeroRecepcion =
+        parametros.get("recepcion");
 
     if (
+        !numeroRecepcion ||
         !inputSeguimiento
-        ||
+    ) {
+        return;
+    }
+
+    inputSeguimiento.value =
+        numeroRecepcion;
+
+    const seccionSeguimiento =
+        document.getElementById(
+            "seguimiento"
+        );
+
+    if (seccionSeguimiento) {
+
+        setTimeout(() => {
+
+            seccionSeguimiento.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 200);
+
+    }
+
+    setTimeout(() => {
+
+        consultarSeguimiento();
+
+    }, 500);
+
+}
+
+cargarSeguimientoDesdeURL();
+
+function obtenerPasoSeguimiento(
+    estado,
+    certificadoDisponible
+) {
+
+    if (certificadoDisponible) {
+        return 4;
+    }
+
+    const estadoNormalizado =
+        String(estado || "")
+            .trim()
+            .toUpperCase();
+
+
+    if (
+        estadoNormalizado === "FINALIZADO" ||
+        estadoNormalizado === "ANALISIS FINALIZADO" ||
+        estadoNormalizado === "ANÁLISIS FINALIZADO"
+    ) {
+
+        return 3;
+
+    }
+
+
+    if (
+        estadoNormalizado === "PENDIENTE" ||
+        estadoNormalizado === "EN PROCESO" ||
+        estadoNormalizado === "EN ANALISIS" ||
+        estadoNormalizado === "EN ANÁLISIS"
+    ) {
+
+        return 2;
+
+    }
+
+
+    return 1;
+
+}
+
+
+
+async function consultarSeguimiento() {
+
+    if (
+        !inputSeguimiento ||
         !resultadoSeguimiento
     ) {
 
@@ -745,22 +882,18 @@ function consultarSeguimiento() {
     }
 
 
-    const codigo =
+    const numeroRecepcion =
         inputSeguimiento.value
             .trim()
             .toUpperCase();
 
 
-    if (
-        codigo === ""
-    ) {
+    if (!numeroRecepcion) {
 
         resultadoSeguimiento.innerHTML = `
-
-            <strong>
-                Ingresa tu código de seguimiento.
-            </strong>
-
+            <div class="seguimiento-mensaje error">
+                Ingresa tu N.º de recepción.
+            </div>
         `;
 
         return;
@@ -768,31 +901,313 @@ function consultarSeguimiento() {
     }
 
 
+    botonSeguimiento.disabled = true;
+
+    botonSeguimiento.textContent =
+        "Consultando...";
+
+
     resultadoSeguimiento.innerHTML = `
-
-        Código consultado:
-
-        <strong>
-            ${codigo}
-        </strong>
-
-        <br><br>
-
-        <span>
-            La consulta real del estado se habilitará
-            cuando conectemos esta página con el sistema
-            de Laboratorio CJV y la base de datos.
-        </span>
-
+        <div class="seguimiento-mensaje">
+            Buscando recepción...
+        </div>
     `;
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabasePublico.rpc(
+                "consultar_seguimiento",
+                {
+                    p_numero_recepcion:
+                        numeroRecepcion
+                }
+            );
+
+
+        if (error) {
+
+            console.error(
+                "Error seguimiento:",
+                error
+            );
+
+            throw error;
+
+        }
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            resultadoSeguimiento.innerHTML = `
+                <div class="seguimiento-mensaje error">
+
+                    No se encontró la recepción
+
+                    <strong>
+                        ${escaparSeguimiento(numeroRecepcion)}
+                    </strong>.
+
+                    <br>
+
+                    Verifica el número e inténtalo nuevamente.
+
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        const primera =
+            data[0];
+
+
+        const pasoMaximo =
+            Math.max(
+                ...data.map(
+                    registro =>
+                        obtenerPasoSeguimiento(
+                            registro.estado_muestra,
+                            registro.certificado_disponible
+                        )
+                )
+            );
+
+
+        const muestrasHTML =
+            data.map(
+                registro => {
+
+                    const estado =
+                        registro.certificado_disponible
+                            ? "CERTIFICADO DISPONIBLE"
+                            : (
+                                registro.estado_muestra ||
+                                "RECEPCIONADO"
+                            );
+
+
+                    return `
+
+                        <div class="seguimiento-muestra">
+
+                            <div>
+
+                                <span>
+                                    MUESTRA
+                                </span>
+
+                                <strong>
+                                    ${escaparSeguimiento(
+                                        registro.codigo_muestra ||
+                                        "Sin código"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    ESTADO
+                                </span>
+
+                                <strong>
+                                    ${escaparSeguimiento(
+                                        estado
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            ${
+                                registro.certificado_disponible &&
+                                registro.certificado_url
+
+                                    ? `
+
+                                        <a
+                                            href="${escaparSeguimiento(
+                                                registro.certificado_url
+                                            )}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="boton-certificado-seguimiento"
+                                        >
+                                            Ver certificado
+                                        </a>
+
+                                    `
+
+                                    : ""
+                            }
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+
+        resultadoSeguimiento.innerHTML = `
+
+            <div class="seguimiento-resultado-cabecera">
+
+                <span>
+                    RECEPCIÓN
+                </span>
+
+                <strong>
+                    ${escaparSeguimiento(
+                        primera.numero_recepcion
+                    )}
+                </strong>
+
+                <small>
+                    Fecha de recepción:
+                    ${formatearFechaSeguimiento(
+                        primera.fecha_recepcion
+                    )}
+                </small>
+
+            </div>
+
+
+            <div class="seguimiento-progreso">
+
+                <div class="
+                    seguimiento-paso
+                    activo
+                ">
+
+                    <span>01</span>
+
+                    <strong>
+                        Recepción
+                    </strong>
+
+                </div>
+
+
+                <div class="
+                    seguimiento-linea-progreso
+                    ${pasoMaximo >= 2 ? "activo" : ""}
+                "></div>
+
+
+                <div class="
+                    seguimiento-paso
+                    ${pasoMaximo >= 2 ? "activo" : ""}
+                ">
+
+                    <span>02</span>
+
+                    <strong>
+                        Laboratorio
+                    </strong>
+
+                </div>
+
+
+                <div class="
+                    seguimiento-linea-progreso
+                    ${pasoMaximo >= 3 ? "activo" : ""}
+                "></div>
+
+
+                <div class="
+                    seguimiento-paso
+                    ${pasoMaximo >= 3 ? "activo" : ""}
+                ">
+
+                    <span>03</span>
+
+                    <strong>
+                        Reportes
+                    </strong>
+
+                </div>
+
+
+                <div class="
+                    seguimiento-linea-progreso
+                    ${pasoMaximo >= 4 ? "activo" : ""}
+                "></div>
+
+
+                <div class="
+                    seguimiento-paso
+                    ${pasoMaximo >= 4 ? "activo" : ""}
+                ">
+
+                    <span>04</span>
+
+                    <strong>
+                        Finalizado
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="seguimiento-lista-muestras">
+
+                ${muestrasHTML}
+
+            </div>
+
+        `;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        resultadoSeguimiento.innerHTML = `
+
+            <div class="seguimiento-mensaje error">
+
+                No fue posible consultar el seguimiento.
+
+                <br>
+
+                Inténtalo nuevamente.
+
+            </div>
+
+        `;
+
+
+    } finally {
+
+        botonSeguimiento.disabled =
+            false;
+
+        botonSeguimiento.textContent =
+            "Consultar";
+
+    }
 
 }
 
 
 
-if (
-    botonSeguimiento
-) {
+if (botonSeguimiento) {
 
     botonSeguimiento.addEventListener(
         "click",
@@ -803,17 +1218,14 @@ if (
 
 
 
-if (
-    inputSeguimiento
-) {
+if (inputSeguimiento) {
 
     inputSeguimiento.addEventListener(
         "keydown",
         evento => {
 
             if (
-                evento.key ===
-                "Enter"
+                evento.key === "Enter"
             ) {
 
                 consultarSeguimiento();

@@ -3,9 +3,15 @@
 // LOGIN DEL SISTEMA INTERNO
 // ======================================================
 
+// ======================================================
 // CONFIGURACIÓN DE SUPABASE
+// ======================================================
+
 const SUPABASE_URL = "https://xhyejqperbzrhrwikhfa.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gZVHUeFgv3yZIRxQ7FUJOQ_wyuI9s2x";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_gZVHUeFgv3yZIRxQ7FUJOQ_wyuI9s2x";
+
 
 // Crear conexión con Supabase
 const clienteSupabase = window.supabase.createClient(
@@ -13,16 +19,29 @@ const clienteSupabase = window.supabase.createClient(
     SUPABASE_PUBLISHABLE_KEY
 );
 
+
 // ======================================================
 // ELEMENTOS DEL FORMULARIO
 // ======================================================
 
-const formLogin = document.getElementById("formLogin");
-const correo = document.getElementById("correo");
-const contrasena = document.getElementById("contrasena");
-const botonIngresar = document.getElementById("botonIngresar");
-const mostrarContrasena = document.getElementById("mostrarContrasena");
-const mensajeLogin = document.getElementById("mensajeLogin");
+const formLogin =
+    document.getElementById("formLogin");
+
+const correo =
+    document.getElementById("correo");
+
+const contrasena =
+    document.getElementById("contrasena");
+
+const botonIngresar =
+    document.getElementById("botonIngresar");
+
+const mostrarContrasena =
+    document.getElementById("mostrarContrasena");
+
+const mensajeLogin =
+    document.getElementById("mensajeLogin");
+
 
 // ======================================================
 // MOSTRAR / OCULTAR CONTRASEÑA
@@ -31,124 +50,193 @@ const mensajeLogin = document.getElementById("mensajeLogin");
 mostrarContrasena.addEventListener("click", () => {
 
     if (contrasena.type === "password") {
+
         contrasena.type = "text";
+
         mostrarContrasena.textContent = "Ocultar";
+
     } else {
+
         contrasena.type = "password";
+
         mostrarContrasena.textContent = "Mostrar";
+
     }
 
 });
 
+
 // ======================================================
-// MOSTRAR MENSAJES
+// MENSAJE INTERNO
 // ======================================================
-
-function mostrarMensaje(mensaje, tipo) {
-
-    mensajeLogin.textContent = mensaje;
-    mensajeLogin.className = "mensaje-login";
-
-    if (tipo === "error") {
-        mensajeLogin.classList.add("error");
-    }
-
-    if (tipo === "exito") {
-        mensajeLogin.classList.add("exito");
-    }
-}
 
 function limpiarMensaje() {
+
+    if (!mensajeLogin) {
+        return;
+    }
+
     mensajeLogin.textContent = "";
-    mensajeLogin.className = "mensaje-login";
+
+    mensajeLogin.className =
+        "mensaje-login";
+
 }
+
 
 // ======================================================
 // INICIAR SESIÓN
 // ======================================================
 
-formLogin.addEventListener("submit", async (evento) => {
+formLogin.addEventListener(
+    "submit",
+    async (evento) => {
 
-    evento.preventDefault();
+        evento.preventDefault();
 
-    limpiarMensaje();
+        limpiarMensaje();
 
-    const emailIngresado = correo.value.trim();
-    const passwordIngresado = contrasena.value;
 
-    // Validar campos
-    if (!emailIngresado || !passwordIngresado) {
+        const emailIngresado =
+            correo.value.trim();
 
-        mostrarMensaje(
-            "Ingrese su correo electrónico y contraseña.",
-            "error"
-        );
+        const passwordIngresado =
+            contrasena.value;
 
-        return;
-    }
 
-    // Desactivar botón mientras se verifica
-    botonIngresar.disabled = true;
-    botonIngresar.textContent = "Verificando...";
+        // ==================================================
+        // VALIDAR CAMPOS
+        // ==================================================
 
-    try {
+        if (
+            !emailIngresado ||
+            !passwordIngresado
+        ) {
 
-        const { data, error } =
-            await clienteSupabase.auth.signInWithPassword({
-                email: emailIngresado,
-                password: passwordIngresado
-            });
-
-        // Credenciales incorrectas
-        if (error) {
-
-            mostrarMensaje(
-                "Correo o contraseña incorrectos.",
-                "error"
+            mostrarAdvertencia(
+                "Ingrese su correo electrónico y contraseña.",
+                "Datos incompletos"
             );
 
             return;
         }
 
-        // Comprobar sesión
-        if (!data.session) {
 
-            mostrarMensaje(
-                "No se pudo iniciar sesión. Intente nuevamente.",
-                "error"
+        // ==================================================
+        // DESACTIVAR BOTÓN
+        // ==================================================
+
+        botonIngresar.disabled = true;
+
+        botonIngresar.textContent =
+            "Verificando...";
+
+
+        try {
+
+            // ==================================================
+            // AUTENTICACIÓN CON SUPABASE
+            // ==================================================
+
+            const {
+                data,
+                error
+            } =
+                await clienteSupabase.auth.signInWithPassword({
+
+                    email:
+                        emailIngresado,
+
+                    password:
+                        passwordIngresado
+
+                });
+
+
+            // ==================================================
+            // CREDENCIALES INCORRECTAS
+            // ==================================================
+
+            if (error) {
+
+                console.error(
+                    "Error de autenticación:",
+                    error
+                );
+
+                mostrarError(
+                    "El correo o la contraseña son incorrectos.",
+                    "Acceso denegado"
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // COMPROBAR SESIÓN
+            // ==================================================
+
+            if (!data.session) {
+
+                mostrarError(
+                    "No se pudo iniciar sesión. Intente nuevamente.",
+                    "No se pudo acceder"
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // LOGIN CORRECTO
+            // ==================================================
+
+            mostrarExito(
+                "Acceso correcto. Ingresando al sistema...",
+                "¡Bienvenido!"
             );
 
-            return;
+
+            // ==================================================
+            // IR AL PANEL
+            // ==================================================
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "panel.html";
+
+            }, 1200);
+
+
+        } catch (error) {
+
+            console.error(
+                "Error de autenticación:",
+                error
+            );
+
+
+            mostrarError(
+                "No se pudo conectar con el sistema. Intente nuevamente.",
+                "Error de conexión"
+            );
+
+
+        } finally {
+
+            botonIngresar.disabled =
+                false;
+
+            botonIngresar.textContent =
+                "Ingresar al sistema";
+
         }
 
-        // Login correcto
-        mostrarMensaje(
-            "Acceso correcto. Ingresando al sistema...",
-            "exito"
-        );
-
-        // Ir al panel
-        setTimeout(() => {
-            window.location.href = "panel.html";
-        }, 700);
-
-    } catch (error) {
-
-        console.error("Error de autenticación:", error);
-
-        mostrarMensaje(
-            "No se pudo conectar con el sistema. Intente nuevamente.",
-            "error"
-        );
-
-    } finally {
-
-        botonIngresar.disabled = false;
-        botonIngresar.textContent = "Ingresar al sistema";
-
     }
+);
 
-});
 
 // ======================================================
 // COMPROBAR SI YA HAY UNA SESIÓN INICIADA
@@ -159,11 +247,18 @@ async function comprobarSesion() {
     try {
 
         const {
-            data: { session }
-        } = await clienteSupabase.auth.getSession();
+            data: {
+                session
+            }
+        } =
+            await clienteSupabase.auth.getSession();
+
 
         if (session) {
-            window.location.href = "panel.html";
+
+            window.location.href =
+                "panel.html";
+
         }
 
     } catch (error) {
@@ -174,6 +269,9 @@ async function comprobarSesion() {
         );
 
     }
+
 }
 
+
+// Ejecutar comprobación
 comprobarSesion();
