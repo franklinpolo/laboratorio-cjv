@@ -7351,3 +7351,282 @@ body:has(.login) {
     }
 
 }
+
+/* =========================================================
+   RESPONSIVE MÓVIL - PANEL INTERNO
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ===== SIDEBAR SE CONVIERTE EN BARRA SUPERIOR ===== */
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: auto;
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        border-right: none;
+        border-bottom: 1px solid var(--borde);
+
+        background: #0d0d0d;
+
+        z-index: 200;
+    }
+
+    /* ===== LOGO ===== */
+
+    .sidebar-logo {
+        min-height: 62px;
+        padding: 6px 12px;
+
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .sidebar-logo img {
+        width: 115px;
+        height: 46px;
+    }
+
+    .sidebar-logo span {
+        display: none;
+    }
+
+    /* ===== MENÚ HORIZONTAL ===== */
+
+    .sidebar-menu {
+        width: 100%;
+
+        padding: 7px 8px 9px;
+
+        display: flex;
+        flex-direction: row;
+
+        gap: 6px;
+
+        overflow-x: auto;
+
+        border-top: 1px solid rgba(255,255,255,.05);
+    }
+
+    .menu-item {
+        width: auto;
+        min-width: max-content;
+        min-height: 42px;
+
+        padding: 10px 13px;
+
+        justify-content: center;
+
+        border-radius: 8px;
+
+        font-size: 11px;
+        text-align: center;
+
+        white-space: nowrap;
+    }
+
+    .menu-item:hover {
+        transform: none;
+    }
+
+    .badge-menu {
+        min-width: 20px;
+        height: 20px;
+
+        padding: 0 5px;
+
+        font-size: 9px;
+    }
+
+    /* ===== CERRAR SESIÓN ===== */
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    /* ===== CONTENIDO PRINCIPAL ===== */
+
+    .panel-principal {
+        width: 100%;
+        margin-left: 0;
+
+        padding-top: 120px;
+    }
+
+    /* ===== HEADER ===== */
+
+    .panel-header {
+        min-height: 70px;
+
+        padding: 12px 14px;
+
+        position: relative;
+        top: auto;
+
+        gap: 10px;
+    }
+
+    .panel-etiqueta {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .panel-header h1 {
+        font-size: 20px;
+    }
+
+    .usuario-panel {
+        gap: 8px;
+    }
+
+    .usuario-info {
+        display: none;
+    }
+
+    .usuario-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .boton-header {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* ===== SECCIONES ===== */
+
+    .panel-seccion {
+        padding: 18px 14px;
+    }
+
+    .dashboard-encabezado,
+    .seccion-header {
+        margin-bottom: 18px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .dashboard-encabezado h2,
+    .seccion-header h2 {
+        font-size: 25px;
+    }
+
+    .dashboard-encabezado p,
+    .seccion-header p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* ===== PAGOS ===== */
+
+    .dashboard-accion-pago {
+        width: 100%;
+        min-width: 0;
+
+        padding: 12px;
+    }
+
+    /* ===== TARJETAS ===== */
+
+    .dashboard-tarjetas {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-card {
+        min-height: 125px;
+        padding: 18px;
+    }
+
+    .dashboard-card strong {
+        font-size: 27px;
+    }
+
+    /* ===== TABLAS ===== */
+
+    .tabla-contenedor {
+        width: 100%;
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabla-contenedor table {
+        min-width: 700px;
+    }
+
+    /* ===== ESTADOS LABORATORIO ===== */
+
+    .estado-leyenda {
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    .estado-pill {
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+
+    /* ===== FORMULARIOS ===== */
+
+    .formulario-grid {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .campo-grande {
+        grid-column: span 1;
+    }
+
+    .muestra-formulario {
+        padding: 16px;
+    }
+
+    .analisis-fila {
+        grid-template-columns: 1fr;
+    }
+
+    .boton-eliminar-analisis {
+        width: 100%;
+    }
+
+    .formulario-acciones {
+        flex-direction: column-reverse;
+    }
+
+    .formulario-acciones button {
+        width: 100%;
+    }
+
+    /* ===== MODALES ===== */
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-contenido {
+        max-height: 88vh;
+        padding: 20px 16px;
+    }
+
+    .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
